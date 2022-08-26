@@ -1,0 +1,14 @@
+{
+  "name": "mattulator",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watchAll",
+    "test:coverage": "jest --coverage"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "jest": "^27.4.1",
+    "@types/jest": "^27.4.1"
+  }
+}
