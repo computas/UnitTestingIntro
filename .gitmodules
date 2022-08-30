@@ -1,0 +1,9 @@
+[submodule "Kotlin"]
+	path = Kotlin
+	url = git@github.com:jornletnes/UnitTestingIntroKotlin.git
+[submodule "CSharp"]
+	path = CSharp
+	url = git@github.com:jornletnes/UnitTestingIntroCSharp.git
+[submodule "JavaScript"]
+	path = JavaScript
+	url = git@github.com:computasjorn/UnitTestingIntroJavaScript.git
