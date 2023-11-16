@@ -3,6 +3,7 @@
 ## Run
 
 ```
+pip install -r requirements.txt
 cd src
 flask run
 ```

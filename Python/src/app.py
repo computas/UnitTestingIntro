@@ -1,5 +1,8 @@
-from flask import Flask, jsonify
-from weather_forecast_controller import WeatherForecastController
+from datetime import date, timedelta
+from random import choice, randint
+from flask import Flask
+from weather_forecast import WeatherForecast, WeatherForecastDay, possible_summaries
+
 app = Flask(__name__)
 
 
@@ -10,5 +13,12 @@ def index():
 
 @app.route('/forecast')
 def get_forecast():
-    forecast = WeatherForecastController().get(5)
-    return jsonify(forecast)
+    days = [
+        WeatherForecastDay(
+            date = date.today() + timedelta(days = i),
+            temperature_c = randint(-20, 55),
+            summary = choice(possible_summaries)
+        )
+        for i in range(5)
+    ]
+    return WeatherForecast(forecast=days).model_dump_json()

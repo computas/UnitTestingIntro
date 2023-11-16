@@ -1,12 +1,23 @@
-import datetime
+from datetime import date
+from pydantic import BaseModel, computed_field
 from temperature import convert_c_to_f
 
+class WeatherForecastDay(BaseModel):
+    date: date
+    temperature_c: float
+    summary: str
+    
+    @computed_field
+    @property
+    def temperature_f(self) -> float:
+        return convert_c_to_f(self.temperature_c)
 
-class WeatherForecast(dict):
-    def __init__(self, date: datetime, temperature_c: int, summary: str):
-        dict.__init__(
-            self, date=date,
-            temperature_c=temperature_c,
-            temperature_f=int(convert_c_to_f(temperature_c)),
-            summary=summary
-        )
+
+class WeatherForecast(BaseModel):
+    forecast: list[WeatherForecastDay]
+
+
+possible_summaries = [
+    "Freezing", "Bracing", "Chilly", "Cool", "Mild",
+    "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+]
